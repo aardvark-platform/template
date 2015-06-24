@@ -1,3 +1,7 @@
+Aardvark.Base
+Aardvark.Base.Incremental
+Aardvark.Base.Rendering
+Aardvark.Base.FSharp
 #if __WPF__
 Aardvark.VRVis.WPF
 #endif
