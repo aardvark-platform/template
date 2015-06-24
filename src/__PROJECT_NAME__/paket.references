@@ -1,0 +1,6 @@
+#if __WPF__
+Aardvark.VRVis.WPF
+#endif
+#if __WinForms__
+Aardvark.VRVis.WinForms
+#endif

@@ -5,6 +5,6 @@ nuget
     #if __WPF__
     Aardvark.VRVis.WPF ~> 1.3.7
     #endif
-    #if WinForms
+    #if __WinForms__
     Aardvark.VRVis.WinForms ~> 1.3.7
     #endif
