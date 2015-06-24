@@ -40,6 +40,7 @@ let preprocess(file : string) =
 
     let cleaned =
         cleaned
+            .Replace("__SOLUTION_NAME__", solutionName)
             .Replace("__PROJECT_NAME__", projectName)
             .Replace("__PROJECT_GUID__", projectGuid) 
 
