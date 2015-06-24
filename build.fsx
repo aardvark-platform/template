@@ -31,7 +31,11 @@ Target "Install" (fun () ->
 )
 
 Target "Restore" (fun () ->
-    AdditionalSources.paketDependencies.Restore()
+    if File.Exists "paket.lock" then
+        AdditionalSources.paketDependencies.Restore()
+    else
+        AdditionalSources.paketDependencies.Install(false, false, false, true)
+        
     AdditionalSources.installSources ()
 )
 

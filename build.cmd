@@ -3,6 +3,10 @@
 PUSHD %~dp0
 REM cls
 
+IF exist boot.fsx ( 
+"packages\FAKE\tools\Fake.exe" "boot.fsx" 
+RM "boot.fsx"
+) ELSE ( 
 IF exist packages\FAKE ( echo skipping FAKE download ) ELSE ( 
 echo downloading FAKE
 REM dir
@@ -25,4 +29,5 @@ SET args=!t!
 
 "packages\FAKE\tools\Fake.exe" "build.fsx" "target=%TARGET%" %args%
 RM tmp
+)
 
