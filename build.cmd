@@ -4,8 +4,9 @@ PUSHD %~dp0
 REM cls
 
 IF exist boot.fsx ( 
+"bin\nuget.exe" "install" "FAKE" "-OutputDirectory" "Packages" "-ExcludeVersion" "-Prerelease"
 "packages\FAKE\tools\Fake.exe" "boot.fsx" 
-RM "boot.fsx"
+del "boot.fsx"
 ) ELSE ( 
 IF exist packages\FAKE ( echo skipping FAKE download ) ELSE ( 
 echo downloading FAKE
@@ -28,6 +29,6 @@ IF DEFINED t SET "t=!t:%1 =!"
 SET args=!t!
 
 "packages\FAKE\tools\Fake.exe" "build.fsx" "target=%TARGET%" %args%
-RM tmp
+del tmp
 )
 
