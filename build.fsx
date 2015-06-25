@@ -76,11 +76,6 @@ Target "Compile" (fun () ->
     MSBuildRelease "bin/Release" "Build" core |> ignore
 )
 
-Target "Default" (fun () -> ())
-
-"Restore" ==> 
-    "Compile" ==>
-    "Default"
 
 
 Target "CreatePackage" (fun () ->
@@ -164,10 +159,16 @@ Target "Deploy" (fun () ->
 )
 
 
+Target "Default" (fun () -> ())
+
 "Compile" ==> "CreatePackage"
 "CreatePackage" ==> "Deploy"
 "CreatePackage" ==> "Push"
 
+
+"Restore" ==> 
+    "Compile" ==>
+    "Default"
+    
 // start build
-//RunTargetOrDefault "Default"
-RunTargetOrDefault "InstallSources"
+RunTargetOrDefault "Default"
