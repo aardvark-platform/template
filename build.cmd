@@ -7,6 +7,7 @@ IF exist boot.fsx (
 "bin\nuget.exe" "install" "FAKE" "-OutputDirectory" "Packages" "-ExcludeVersion" "-Prerelease"
 "packages\FAKE\tools\Fake.exe" "boot.fsx" 
 del "boot.fsx"
+RD Packages /S /Q
 ) ELSE ( 
 IF exist packages\FAKE ( echo skipping FAKE download ) ELSE ( 
 echo downloading FAKE
