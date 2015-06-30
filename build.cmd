@@ -18,7 +18,7 @@ REM dir
 "bin\nuget.exe" "install" "NUnit.Runners" "-OutputDirectory" "Packages" "-ExcludeVersion"
 "bin\nuget.exe" "install" "Aardvark.Build" "-OutputDirectory" "Packages" "-ExcludeVersion"
 "bin\nuget.exe" "install" "Paket.Core" "-OutputDirectory" "packages" "-ExcludeVersion"
-)
+))
 
 SET TARGET=Default
 IF NOT [%1]==[] (set TARGET=%1)
