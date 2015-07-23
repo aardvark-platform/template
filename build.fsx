@@ -94,6 +94,42 @@ Target "CreatePackage" (fun () ->
 )
 
 
+Target "InjectNativeDependencies" (fun () ->
+
+    if Directory.Exists "bin/Debug" then
+        File.Copy(@"packages/Aardvark.Build/lib/net45/Aardvark.Build.dll", @"bin/Debug/Aardvark.Build.dll", true)
+    if Directory.Exists "bin/Release" then
+        File.Copy(@"packages/Aardvark.Build/lib/net45/Aardvark.Build.dll", @"bin/Release/Aardvark.Build.dll", true)
+
+    let dirs = Directory.GetDirectories "libs/Native"
+    for d in dirs do
+        let n = Path.GetFileName d
+        let d = d |> Path.GetFullPath
+        let paths = [
+            Path.Combine("bin/Release", n + ".dll") |> Path.GetFullPath
+            Path.Combine("bin/Release", n + ".exe") |> Path.GetFullPath
+            Path.Combine("bin/Debug", n + ".dll") |> Path.GetFullPath
+            Path.Combine("bin/Debug", n + ".exe") |> Path.GetFullPath
+        ]
+
+        let wd = Environment.CurrentDirectory
+        try
+        
+            for p in paths do
+                if File.Exists p then
+                    Environment.CurrentDirectory <- Path.GetDirectoryName p
+                    let ass = Mono.Cecil.AssemblyDefinition.ReadAssembly(p)
+                    AssemblyInjector.addResources d ass
+                    ass.Write p
+                    tracefn "injected native stuff in %A" p
+        finally
+            Environment.CurrentDirectory <- wd
+
+        ()
+
+    ()
+)
+
 Target "Push" (fun () ->
     let packages = !!"bin/*.nupkg"
     let packageNameRx = Regex @"(?<name>[a-zA-Z_0-9\.]+?)\.(?<version>([0-9]+\.)*[0-9]+)\.nupkg"
@@ -161,13 +197,14 @@ Target "Deploy" (fun () ->
 
 Target "Default" (fun () -> ())
 
-"Compile" ==> "CreatePackage"
+"Compile" ==> "InjectNativeDependencies" ==> "CreatePackage"
 "CreatePackage" ==> "Deploy"
 "CreatePackage" ==> "Push"
 
 
 "Restore" ==> 
     "Compile" ==>
+    "InjectNativeDependencies" ==>
     "Default"
     
 // start build
