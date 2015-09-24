@@ -8,3 +8,4 @@ bin/Debug
 /src/*.suo
 /bin/*.nupkg
 /src/.vs
+/bin/Aardvark.Fake.dll
