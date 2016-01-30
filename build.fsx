@@ -1,11 +1,4 @@
-#I @"packages/FAKE/tools/"
-#I @"packages/Paket.Core/lib/net45"
-#I @"bin"
-#r @"System.Xml.Linq"
-#r @"FakeLib.dll"
-#r @"Paket.Core.dll"
-#r @"Aardvark.Fake.dll"
-
+#load @"paket-files/build/vrvis/Aardvark.Fake/DefaultSetup.fsx"
 
 open Fake
 open System
@@ -13,9 +6,31 @@ open System.IO
 open System.Diagnostics
 open Aardvark.Fake
 
+
 do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
-DefaultTargets.install ["src/__SOLUTION_NAME__.sln"]
+DefaultSetup.install ["src/__SOLUTION_NAME__.sln"]
 
-// start build
-RunTargetOrDefault "Default"
+Target "Tests" (fun () ->
+    Fake.NUnitSequential.NUnit (fun p -> { p with ToolPath = @"packages\NUnit.Runners\tools"
+                                                  ToolName = "nunit-console.exe" }) [@"bin\Release\Aardvark.Base.Incremental.Tests.exe"]
+)
+
+Target "Statistics" (fun () ->
+    let fsFiles = !!"src/**/*.fs"  
+
+    let mutable stats = Map.empty
+    for f in fsFiles do
+        tracefn "file: %A" f
+        ()
+
+
+
+)
+
+#if DEBUG
+do System.Diagnostics.Debugger.Launch() |> ignore
+#endif
+
+
+entry()
