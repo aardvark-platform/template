@@ -1,10 +1,15 @@
 Aardvark.Base
 Aardvark.Base.Incremental
-Aardvark.Base.Rendering
 Aardvark.Base.FSharp
 #if __WPF__
-Aardvark.VRVis.WPF
+Aardvark.Base.Rendering
+Aardvark.Application.WPF.GL
+Aardvark.SceneGraph
+Aardvark.Rendering.NanoVg
 #endif
 #if __WinForms__
-Aardvark.VRVis.WinForms
+Aardvark.Base.Rendering
+Aardvark.Application.WinForms.GL
+Aardvark.SceneGraph
+Aardvark.Rendering.NanoVg
 #endif

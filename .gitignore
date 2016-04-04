@@ -10,3 +10,4 @@ bin/Debug
 /src/.vs
 /paket-files
 /.fake
+/.paket/paket.exe

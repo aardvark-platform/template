@@ -21,6 +21,7 @@ SET FSI_PATH=packages\build\FAKE\tools\Fake.exe
 IF exist boot.fsx ( 
     "%FSI_PATH%" "boot.fsx" 
     del "boot.fsx"
+	.paket\paket.exe install
 ) ELSE (
 	"%FSI_PATH%" "build.fsx" Dummy --fsiargs build.fsx %* 
 )
