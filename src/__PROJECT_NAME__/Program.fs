@@ -1,5 +1,6 @@
 ﻿open System
 open Aardvark.Base
+open Aardvark.Base.Rendering
 open Aardvark.Base.Incremental
 open Aardvark.Rendering.NanoVg
 open Aardvark.SceneGraph
