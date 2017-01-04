@@ -6,9 +6,12 @@ open System.Text.RegularExpressions
 do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 
-let ask (question : string) =
+let ask (question : string) (defaultAnswer : string) =
     printfn "%s" question
-    Console.ReadLine()
+    let s = Console.ReadLine()
+    match s with
+        | "" -> defaultAnswer
+        | _ -> s
 
 let rec askYesNo (question : string) =
     printfn "%s (Y|n)" question
@@ -17,9 +20,10 @@ let rec askYesNo (question : string) =
     elif a.[0] = 'N' || a.[0] = 'n' then false
     else askYesNo question
 
+printfn ""
 let projectGuid = Guid.NewGuid() |> string
-let solutionName = ask "Please enter a solution name"
-let projectName = ask "Please enter a project name"
+let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
+let projectName = ask "Please enter a project name [Example]" "Example"
 
 let winForms = askYesNo "Would you like to reference the Windows.Forms libraries?"
 let wpf = if winForms then false else askYesNo "Would you like to reference the WPF libraries?"
