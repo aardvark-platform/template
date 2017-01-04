@@ -11,3 +11,4 @@ bin/Debug
 /paket-files
 /.fake
 /.paket/paket.exe
+/Aardvark.log
