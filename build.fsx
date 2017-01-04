@@ -6,12 +6,15 @@ open System.IO
 open System.Diagnostics
 open Aardvark.Fake
 
-
 do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 DefaultSetup.install ["src/__SOLUTION_NAME__.sln"]
 
-Target "Tests" (fun () ->
+Target "Run" (fun() ->
+    tracefn "exec: %d" (Shell.Exec "bin/Release/HelloWorld.exe")
+)
+
+Target "Test" (fun () ->
     Fake.NUnitSequential.NUnit (fun p -> { p with ToolPath = @"packages\NUnit.Runners\tools"
                                                   ToolName = "nunit-console.exe" }) [@"bin\Release\Aardvark.Base.Incremental.Tests.exe"]
 )
@@ -23,14 +26,6 @@ Target "Statistics" (fun () ->
     for f in fsFiles do
         tracefn "file: %A" f
         ()
-
-
-
 )
-
-#if DEBUG
-do System.Diagnostics.Debugger.Launch() |> ignore
-#endif
-
 
 entry()
