@@ -11,7 +11,7 @@ do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 DefaultSetup.install ["src/__SOLUTION_NAME__.sln"]
 
 Target "Run" (fun() ->
-    tracefn "exec: %d" (Shell.Exec "bin/Release/HelloWorld.exe")
+    tracefn "exec: %d" (Shell.Exec "bin/Release/__PROJECT_NAME__.exe")
 )
 
 Target "Test" (fun () ->
