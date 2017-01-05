@@ -26,7 +26,7 @@ let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
 
 let winForms = askYesNo "Would you like to reference the Windows.Forms libraries?"
-let wpf = if winForms then false else askYesNo "Would you like to reference the WPF libraries?"
+let wpf = false// if winForms then false else askYesNo "Would you like to reference the WPF libraries?"
 
 
 let preprocess(file : string) =
