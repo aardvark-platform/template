@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>__PROJECT_NAME__</RootNamespace>
     <AssemblyName>__PROJECT_NAME__</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
     <Name>__PROJECT_NAME__</Name>
