@@ -11,3 +11,10 @@ Aardvark.Base.Rendering
 Aardvark.Application.WinForms.GL
 Aardvark.SceneGraph
 #endif
+#if __media__
+Aardvark.UI.Primitives
+Aardvark.Service      
+Aardvark.Cef.WinForms
+Aardvark.Compiler.DomainTypes        
+Aardvark.Compiler.DomainTypes.MSBuild
+#endif
