@@ -12,7 +12,7 @@ open Aardvark.Application.WinForms
 #endif
 
 
-[<EntryPoint>]
+[<EntryPoint;STAThread>]
 let main argv = 
     Ag.initialize()
     Aardvark.Init()
