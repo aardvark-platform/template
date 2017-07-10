@@ -5,7 +5,12 @@ open Aardvark.Base.Incremental
 open Aardvark.Rendering.NanoVg
 open Aardvark.SceneGraph
 open Aardvark.Application
+#if __WPF__
 open Aardvark.Application.WinForms
+#endif
+#if __WinForms__
+open Aardvark.Application.Wpf
+#endif
 
 
 [<EntryPoint>]

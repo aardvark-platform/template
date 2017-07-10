@@ -5,11 +5,9 @@ Aardvark.Base.FSharp
 Aardvark.Base.Rendering
 Aardvark.Application.WPF.GL
 Aardvark.SceneGraph
-Aardvark.Rendering.NanoVg
 #endif
 #if __WinForms__
 Aardvark.Base.Rendering
 Aardvark.Application.WinForms.GL
 Aardvark.SceneGraph
-Aardvark.Rendering.NanoVg
 #endif

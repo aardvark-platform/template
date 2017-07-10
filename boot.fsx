@@ -27,7 +27,7 @@ let projectName = ask "Please enter a project name [Example]" "Example"
 
 let winForms = askYesNo "Would you like to reference the Windows.Forms libraries? (If you want to spawn windows to render to them via aardvark.rendering you need those libraries)"
 let wpf = if winForms then false else askYesNo "Would you like to reference the WPF libraries?"
-let media = if winForms || wpf then false else askYesNo "Would you like to reference aardvark.media as gui library?"
+let media = askYesNo "Would you additionally want to reference the aardvark-media libraries?"
 
 
 let preprocess(file : string) =
