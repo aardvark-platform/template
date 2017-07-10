@@ -5,7 +5,7 @@ open Aardvark.Base.Incremental
 open Aardvark.SceneGraph
 open Aardvark.Application
 #if __WPF__
-open Aardvark.Application.Wpf
+open Aardvark.Application.WPF
 #endif
 #if __WinForms__
 open Aardvark.Application.WinForms
@@ -19,7 +19,9 @@ let main argv =
 
     use app = new OpenGlApplication()
     let win = app.CreateSimpleRenderWindow()
+	#if __WinForms__
     win.Text <- "Aardvark rocks \\o/"
+    #endif
 
     let quadGeometry =
         IndexedGeometry(
