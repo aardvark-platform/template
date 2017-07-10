@@ -2,7 +2,6 @@
 open Aardvark.Base
 open Aardvark.Base.Rendering
 open Aardvark.Base.Incremental
-open Aardvark.Rendering.NanoVg
 open Aardvark.SceneGraph
 open Aardvark.Application
 #if __WPF__
@@ -52,7 +51,6 @@ let main argv =
     
     let task =
         app.Runtime.CompileRender(win.FramebufferSignature, sg)
-            |> DefaultOverlays.withStatistics
 
     win.RenderTask <- task
     win.Run()
