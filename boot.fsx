@@ -55,7 +55,7 @@ let bootSolution() =
 
     let target = Path.Combine("src", projectName)
     if Directory.Exists target then
-        Directory.Delete target
+        Directory.Delete(target,true)
 
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
@@ -64,6 +64,7 @@ printfn "creating template"
 preprocess <| "paket.dependencies"
 preprocess <| "build.fsx"
 preprocess <| Path.Combine("src", "__PROJECT_NAME__", "paket.references")
+preprocess <| Path.Combine("src", "__PROJECT_NAME__", "Program.fs")
 preprocess <| Path.Combine("src", "__PROJECT_NAME__", "__PROJECT_NAME__.fsproj")
 preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
 bootSolution()

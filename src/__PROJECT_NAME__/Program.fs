@@ -6,10 +6,10 @@ open Aardvark.Rendering.NanoVg
 open Aardvark.SceneGraph
 open Aardvark.Application
 #if __WPF__
-open Aardvark.Application.WinForms
+open Aardvark.Application.Wpf
 #endif
 #if __WinForms__
-open Aardvark.Application.Wpf
+open Aardvark.Application.WinForms
 #endif
 
 
