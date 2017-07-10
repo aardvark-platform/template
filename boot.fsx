@@ -38,6 +38,7 @@ let preprocess(file : string) =
         match m.Groups.["name"].Value with
             | "__WPF__" when wpf -> m.Groups.["body"].Value
             | "__WinForms__" when winForms -> m.Groups.["body"].Value
+            | "__media__" when media -> m.Groups.["body"].Value
             | _ -> ""
     ))
 
