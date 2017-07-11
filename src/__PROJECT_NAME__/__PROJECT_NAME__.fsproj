@@ -49,6 +49,10 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+#if __media__
+    <Compile Include="RenderModel.fs" />
+    <Compile Include="RenderModelApp.fs" />
+#endif
     <Compile Include="Program.fs" />
   </ItemGroup>
   <PropertyGroup>

@@ -3,7 +3,7 @@ SETLOCAL
 PUSHD %~dp0
 
 ECHO bootstrapping package manager ...
-.paket\paket.bootstrapper.exe
+REM .paket\paket.bootstrapper.exe
 if errorlevel 1 (
   exit /b %errorlevel%
 )

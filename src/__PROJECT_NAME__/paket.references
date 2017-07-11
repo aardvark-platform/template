@@ -1,15 +1,18 @@
 Aardvark.Base
 Aardvark.Base.Incremental
 Aardvark.Base.FSharp
+
 #if __WPF__
 Aardvark.Base.Rendering
 Aardvark.Application.WPF.GL
 Aardvark.SceneGraph
+Aardvark.SceneGraph.IO
 #endif
 #if __WinForms__
 Aardvark.Base.Rendering
 Aardvark.Application.WinForms.GL
 Aardvark.SceneGraph
+Aardvark.SceneGraph.IO
 #endif
 #if __media__
 Aardvark.UI.Primitives
@@ -17,4 +20,6 @@ Aardvark.Service
 Aardvark.Cef.WinForms
 Aardvark.Compiler.DomainTypes        
 Aardvark.Compiler.DomainTypes.MSBuild
+Aardvark.SceneGraph
+Aardvark.SceneGraph.IO
 #endif

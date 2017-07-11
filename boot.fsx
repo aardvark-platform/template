@@ -25,9 +25,10 @@ let projectGuid = Guid.NewGuid() |> string
 let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
 
-let winForms = askYesNo "Would you like to reference the Windows.Forms libraries? (If you want to spawn windows to render to them via aardvark.rendering you need those libraries)"
-let wpf = if winForms then false else askYesNo "Would you like to reference the WPF libraries?"
-let media = askYesNo "Would you additionally want to reference the aardvark-media libraries?"
+let media = askYesNo "Would you want to reference the aardvark-media libraries?"
+let winForms = not media && askYesNo "Would you like to reference the Windows.Forms libraries? (If you want to spawn windows to render to them via aardvark.rendering you need those libraries)" 
+let wpf = if winForms || media then false else askYesNo "Would you like to reference the WPF libraries?"
+
 
 
 let preprocess(file : string) =
@@ -58,9 +59,21 @@ let bootSolution() =
     if Directory.Exists target then
         Directory.Delete(target,true)
 
+    if media then
+        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        File.Move(Path.Combine("src", "__PROJECT_NAME__","MediaUI.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    elif wpf then
+        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        File.Move(Path.Combine("src", "__PROJECT_NAME__","WPF.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    elif winForms then
+        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        File.Move(Path.Combine("src", "__PROJECT_NAME__","WinForms.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
+
 printfn "creating template"
+
 
 preprocess <| "paket.dependencies"
 preprocess <| "build.fsx"
