@@ -15,7 +15,7 @@ let main argv =
 
     use app = new OpenGlApplication()
     let win = app.CreateSimpleRenderWindow()
-    win.Text <- "Aardvark rocks \\o/"
+    win.Title <- "Aardvark rocks \\o/"
 
     let quadGeometry =
         IndexedGeometry(

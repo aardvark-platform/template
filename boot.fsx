@@ -59,15 +59,25 @@ let bootSolution() =
     if Directory.Exists target then
         Directory.Delete(target,true)
 
+    let deleteInPr files =
+        try
+            for f in files do
+                let f = Path.Combine("src", "__PROJECT_NAME__",f)
+                File.Delete f
+        with e -> printfn "could not clean up dir: %A" e
+
     if media then
         File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
         File.Move(Path.Combine("src", "__PROJECT_NAME__","MediaUI.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        deleteInPr ["WPF.fs";"WinForms.fs"]
     elif wpf then
         File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
         File.Move(Path.Combine("src", "__PROJECT_NAME__","WPF.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WinForms.fs"]
     elif winForms then
         File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
         File.Move(Path.Combine("src", "__PROJECT_NAME__","WinForms.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+        deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WPF.fs"]
 
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
