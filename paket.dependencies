@@ -27,11 +27,11 @@ nuget Aardvark.SceneGraph.IO               ~> 3.3.1
 #if __media__
 nuget Aardvark.Compiler.DomainTypes         ~> 0.2.6
 nuget Aardvark.Compiler.DomainTypes.MSBuild ~> 0.2.6
-nuget Aardvark.UI            ~> 3.3.32             
-nuget Aardvark.UI.Primitives ~> 3.3.32
-nuget Aardvark.Service       ~> 3.3.32
-nuget Aardvark.Cef.WinForms  ~> 3.3.32
-nuget Aardvark.Cef           ~> 3.3.32
+nuget Aardvark.UI            ~> 3.3.33             
+nuget Aardvark.UI.Primitives ~> 3.3.33
+nuget Aardvark.Service       ~> 3.3.33
+nuget Aardvark.Cef.WinForms  ~> 3.3.33
+nuget Aardvark.Cef           ~> 3.3.33
 nuget Aardvark.Base.Rendering              ~> 3.3.1
 nuget Aardvark.SceneGraph                  ~> 3.3.1
 nuget Aardvark.SceneGraph.IO               ~> 3.3.1

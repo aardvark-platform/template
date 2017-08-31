@@ -1,5 +1,6 @@
 ﻿module MediaUI
 
+open System
 open System.Windows.Forms
 
 open Aardvark.Base
@@ -37,5 +38,5 @@ let startMedia argv =
     Application.Run form
     System.Environment.Exit 0
 
-[<EntryPoint>]
+[<EntryPoint;STAThread>]
 let main argv = startMedia argv; 0
