@@ -2,8 +2,6 @@
 For further information visit [aardvark-platform](https://github.com/aardvark-platform) and [wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki).
 Our [quickstart](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Windows) smoothes the path for your Aardvark experience.
 
-[![Build Status](https://travis-ci.org/aardvark-platform/template.svg?branch=master)](https://travis-ci.org/aardvark-platform/template)
-
 # template
 This repository contains tools for quickly setting up a project which automatically already references all [aardvark.rendering](https://github.com/vrvis/aardvark.rendering) packages.
 
