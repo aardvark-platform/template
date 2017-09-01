@@ -5,7 +5,7 @@ To create a new project run __build.cmd__ or __build.sh__ and follow the instruc
 
 A __visual studio solution__ inclusive project file is generated.
 
-After successfully setting up your project __build.cmd__ or __build.sh__ triggers our build script [aardvark.fake](https://github.com/aardvark-platform/Aardvark.Fake)
+After successfully setting up your project, __build.cmd__ or __build.sh__ triggers our [build script](https://github.com/aardvark-platform/Aardvark.Fake)
 
 ## Aardvark Platform
 For further information visit [aardvark-platform](https://github.com/aardvark-platform) and [wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki).
