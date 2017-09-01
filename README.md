@@ -1,6 +1,6 @@
 # Aardvark-platform
-For further information visit [aardvark platform](https://github.com/aardvark-platform) and [Wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki).
-Our [Quickstart](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Windows) smoothes the path for your aardvark experience.
+For further information visit [aardvark-platform](https://github.com/aardvark-platform) and [wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki).
+Our [quickstart](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Windows) smoothes the path for your Aardvark experience.
 
 [![Build Status](https://travis-ci.org/aardvark-platform/template.svg?branch=master)](https://travis-ci.org/aardvark-platform/template)
 
