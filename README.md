@@ -1,5 +1,5 @@
 # template
-This repository contains tools for quickly setting up your own __Aardvark__ project. All [aardvark.rendering](https://github.com/vrvis/aardvark.rendering) packages are automatically referenced to start developing straight away.
+This repository contains tools for quickly setting up your own __Aardvark__ project. [aardvark.rendering](https://github.com/aardvark-platform/aardvark.rendering), [aardvark.media](https://github.com/aardvark-platform/aardvark.media) [aardvark.base](https://github.com/aardvark-platform/aardvark.base) packages are already referenced. Start developing interactive visualization apps straight away!
 
 To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
 
