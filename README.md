@@ -10,4 +10,4 @@ After successfully setting up your project, __build.cmd__ or __build.sh__ trigge
 ## Aardvark Platform
 Our [quickstart](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Windows) smoothes the path for your Aardvark experience on Windows or Linux! 
 
-Do not forget to checkout our [wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki) (where your contriubtion is also very welcomed!) and various [examples](https://github.com/aardvark-platform/aardvark.docs).
+Do not forget to checkout our [wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki) and various [examples](https://github.com/aardvark-platform/aardvark.docs), where your contriubtion is very welcomed!
