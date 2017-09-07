@@ -1,5 +1,6 @@
-# template
-This repository contains tools for quickly setting up your own __Aardvark__ project. [aardvark.base](https://github.com/aardvark-platform/aardvark.base), [aardvark.rendering](https://github.com/aardvark-platform/aardvark.rendering) and [aardvark.media](https://github.com/aardvark-platform/aardvark.media) packages are already referenced. Start developing interactive visualization apps straight away!
+This repository is part of the open-source [Aardvark platform](https://github.com/aardvark-platform/aardvark.docs/wiki) for visual computing, real-time graphics and visualization.
+
+This template contains tools for quickly setting up your own interactive visualization __Aardvark__ app.
 
 To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
 
