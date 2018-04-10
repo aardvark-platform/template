@@ -27,11 +27,11 @@ nuget Aardvark.Application.WinForms.GL     ~> 3.6.26
 
 #if __media__
 //Aardvark Media
-nuget Aardvark.UI            ~> 3.4.5             
-nuget Aardvark.UI.Primitives ~> 3.4.5
-nuget Aardvark.Service       ~> 3.4.5
-nuget Aardvark.Cef.WinForms  ~> 3.4.5
-nuget Aardvark.Cef           ~> 3.4.5
+nuget Aardvark.UI            ~> 3.4.7             
+nuget Aardvark.UI.Primitives ~> 3.4.7
+nuget Aardvark.Service       ~> 3.4.7
+nuget Aardvark.Cef.WinForms  ~> 3.4.7
+nuget Aardvark.Cef           ~> 3.4.7
 #endif
 
 
