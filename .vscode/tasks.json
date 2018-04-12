@@ -1,16 +1,17 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
-    "command": "build.cmd",
-    "isShellCommand": true,
-    "args": [],
-    "showOutput": "always",
+    "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "compile",
-            "args": [],
-            "isBuildCommand": true
+            "label": "build",
+            "command": "dotnet build src/__SOLUTION_NAME__.sln",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
         }
     ]
 }
