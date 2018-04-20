@@ -25,9 +25,9 @@ let projectGuid = Guid.NewGuid() |> string
 let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
 
-let media = askYesNo "Would you want to reference the aardvark-media libraries?"
-let winForms = not media && askYesNo "Would you like to reference the Windows.Forms libraries? (If you want to spawn windows to render to them via aardvark.rendering you need those libraries)" 
-let wpf = if winForms || media then false else askYesNo "Would you like to reference the WPF libraries?"
+let media = false
+let winForms = false
+let wpf = false
 
 
 
@@ -91,4 +91,6 @@ preprocess <| Path.Combine("src", "__PROJECT_NAME__", "paket.references")
 preprocess <| Path.Combine("src", "__PROJECT_NAME__", "Program.fs")
 preprocess <| Path.Combine("src", "__PROJECT_NAME__", "__PROJECT_NAME__.fsproj")
 preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
+preprocess <| Path.Combine(".vscode", "launch.json")
+preprocess <| Path.Combine(".vscode", "tasks.json")
 bootSolution()
