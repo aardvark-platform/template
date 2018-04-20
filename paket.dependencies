@@ -4,20 +4,18 @@ source https://vrvis.myget.org/F/aardvark_public/api/v3/index.json
 
 nuget FSharp.Core                          ~> 4.3.0
 
-nuget Aardvark.Base                        ~> 4.0.9
-nuget Aardvark.Base.Incremental            ~> 4.0.9
-nuget Aardvark.Base.FSharp                 ~> 4.0.9
-nuget Aardvark.Base.Essentials             ~> 4.0.9
+nuget Aardvark.Base                        ~> 4.0.10
+nuget Aardvark.Base.Incremental            ~> 4.0.10
+nuget Aardvark.Base.FSharp                 ~> 4.0.10
+nuget Aardvark.Base.Essentials             ~> 4.0.10
 
-nuget Aardvark.Base.Rendering              ~> 4.0.3
-nuget Aardvark.SceneGraph                  ~> 4.0.3
-nuget Aardvark.SceneGraph.IO               ~> 4.0.3
+nuget Aardvark.Base.Rendering              ~> 4.0.4
+nuget Aardvark.SceneGraph                  ~> 4.0.4
+nuget Aardvark.SceneGraph.IO               ~> 4.0.4
 
-nuget DevilSharp                           ~> 0.2.4
-
-nuget Aardvark.Application.Slim            ~> 4.0.3
-nuget Aardvark.Application.Slim.GL         ~> 4.0.3
-nuget Aardvark.Application.Slim.Vulkan     ~> 4.0.3
+nuget Aardvark.Application.Slim            ~> 4.0.4
+nuget Aardvark.Application.Slim.GL         ~> 4.0.4
+nuget Aardvark.Application.Slim.Vulkan     ~> 4.0.4
 
 group Build
 framework: net45
