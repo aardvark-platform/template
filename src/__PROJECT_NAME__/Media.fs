@@ -18,7 +18,6 @@ let main args =
     Aardvark.Init()
     Aardium.init()
 
-    Log.warn "%A" Environment.CurrentDirectory
     let app = new HeadlessVulkanApplication(true)
 
     WebPart.startServer 4321 [
