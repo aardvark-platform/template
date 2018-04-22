@@ -25,9 +25,44 @@ let projectGuid = Guid.NewGuid() |> string
 let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
 
-let media = false
-let winForms = false
-let wpf = false
+type ApplicationType =
+    | Rendering
+    | Media
+    | VR
+
+let rec askApplicationType() =
+    printfn "please select an application type"
+
+    printfn "  0: plain rendering application"
+    printfn "  1: aardvark ui application"
+    printfn "  2: VR application using OpenVR"
+
+    
+    let a = Console.ReadLine()
+    match Int32.TryParse(a) with
+        | (true, 0) -> Rendering
+        | (true, 1) -> Media
+        | (true, 2) -> VR
+        | _ -> askApplicationType()
+
+
+let appType = askApplicationType()
+
+
+let deleteProjectFilesExcept (keep : list<string * string>) =
+    let dir = Path.Combine("src", "__PROJECT_NAME__")
+    let files = Directory.GetFiles(dir, "*.fs")
+    let keep = Map.ofList keep
+
+    for f in files do
+        let name = Path.GetFileName(f)
+        match Map.tryFind name keep with
+            | Some newName ->
+                if newName <> name then
+                    File.Move(f, Path.Combine(dir, newName))
+            | None ->
+                File.Delete(f)
+
 
 
 
@@ -37,9 +72,7 @@ let preprocess(file : string) =
 
     let cleaned = ifRx.Replace(f, MatchEvaluator(fun m ->
         match m.Groups.["name"].Value with
-            | "__WPF__" when wpf -> m.Groups.["body"].Value
-            | "__WinForms__" when winForms -> m.Groups.["body"].Value
-            | "__media__" when media -> m.Groups.["body"].Value
+            | "__Media__" when appType = Media -> m.Groups.["body"].Value
             | _ -> ""
     ))
 
@@ -66,18 +99,33 @@ let bootSolution() =
                 File.Delete f
         with e -> printfn "could not clean up dir: %A" e
 
-    if media then
-        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        File.Move(Path.Combine("src", "__PROJECT_NAME__","MediaUI.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        deleteInPr ["WPF.fs";"WinForms.fs"]
-    elif wpf then
-        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        File.Move(Path.Combine("src", "__PROJECT_NAME__","WPF.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WinForms.fs"]
-    elif winForms then
-        File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        File.Move(Path.Combine("src", "__PROJECT_NAME__","WinForms.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-        deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WPF.fs"]
+    match appType with
+        | Rendering ->
+            deleteProjectFilesExcept [
+                "Rendering.fs", "Program.fs"
+            ]
+        | Media ->
+            deleteProjectFilesExcept [
+                "Model.fs", "Model.fs"
+                "App.fs", "App.fs"
+                "Media.fs", "Program.fs"
+            ]
+        | VR ->
+            failwith "not implemented"
+            
+
+    //if media then
+    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","MediaUI.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    deleteInPr ["WPF.fs";"WinForms.fs"]
+    //elif wpf then
+    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","WPF.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WinForms.fs"]
+    //elif winForms then
+    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","WinForms.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
+    //    deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WPF.fs"]
 
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
@@ -87,9 +135,10 @@ printfn "creating template"
 
 preprocess <| "paket.dependencies"
 preprocess <| "build.fsx"
-preprocess <| Path.Combine("src", "__PROJECT_NAME__", "paket.references")
-preprocess <| Path.Combine("src", "__PROJECT_NAME__", "Program.fs")
-preprocess <| Path.Combine("src", "__PROJECT_NAME__", "__PROJECT_NAME__.fsproj")
+Path.Combine("src", "__PROJECT_NAME__") 
+    |> Directory.GetFiles 
+    |> Array.iter preprocess
+
 preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
 preprocess <| Path.Combine(".vscode", "launch.json")
 preprocess <| Path.Combine(".vscode", "tasks.json")
