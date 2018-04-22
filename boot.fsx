@@ -28,21 +28,18 @@ let projectName = ask "Please enter a project name [Example]" "Example"
 type ApplicationType =
     | Rendering
     | Media
-    | VR
 
 let rec askApplicationType() =
     printfn "please select an application type"
 
     printfn "  0: plain rendering application"
     printfn "  1: aardvark ui application"
-    printfn "  2: VR application using OpenVR"
 
     
     let a = Console.ReadLine()
     match Int32.TryParse(a) with
         | (true, 0) -> Rendering
         | (true, 1) -> Media
-        | (true, 2) -> VR
         | _ -> askApplicationType()
 
 
@@ -110,8 +107,6 @@ let bootSolution() =
                 "App.fs", "App.fs"
                 "Media.fs", "Program.fs"
             ]
-        | VR ->
-            failwith "not implemented"
             
 
     //if media then

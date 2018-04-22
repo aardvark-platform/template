@@ -11,7 +11,7 @@ Aardvark.Application.Slim.Vulkan
 Aardvark.SceneGraph
 Aardvark.SceneGraph.IO
 
-#if __MEDIA__
+#if __Media__
 Aardvark.Service
 Aardvark.UI
 Aardvark.UI.Primitives

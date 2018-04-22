@@ -16,7 +16,7 @@ nuget Aardvark.Application.Slim             ~> 4.0.4
 nuget Aardvark.Application.Slim.GL          ~> 4.0.4
 nuget Aardvark.Application.Slim.Vulkan      ~> 4.0.4
                                             
-#if __MEDIA__                               
+#if __Media__                               
 nuget Aardvark.Service                      ~> 4.0.3
 nuget Aardvark.UI                           ~> 4.0.3
 nuget Aardvark.UI.Primitives                ~> 4.0.3
