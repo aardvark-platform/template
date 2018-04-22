@@ -10,22 +10,14 @@ do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 DefaultSetup.install ["src/__SOLUTION_NAME__.sln"]
 
-Target "Run" (fun() ->
-    tracefn "exec: %d" (Shell.Exec "bin/Release/__PROJECT_NAME__.exe")
+Target "Start" (fun() ->
+    let param (p : DotNetCli.CommandParams) =
+        { p with WorkingDir = Path.Combine("bin", "Release", "netcoreapp2.0") }
+
+    DotNetCli.RunCommand param "__PROJECT_NAME__.dll"
 )
 
-Target "Test" (fun () ->
-    Fake.NUnitSequential.NUnit (fun p -> { p with ToolPath = @"packages\NUnit.Runners\tools"
-                                                  ToolName = "nunit-console.exe" }) [@"bin\Release\Aardvark.Base.Incremental.Tests.exe"]
-)
-
-Target "Statistics" (fun () ->
-    let fsFiles = !!"src/**/*.fs"  
-
-    let mutable stats = Map.empty
-    for f in fsFiles do
-        tracefn "file: %A" f
-        ()
-)
+Target "Run" (fun () -> Run "Start")
+"Compile" ==> "Run"
 
 entry()
