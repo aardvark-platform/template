@@ -20,7 +20,7 @@ nuget Aardvark.Application.Slim.Vulkan      ~> 4.1.3
 nuget Aardvark.Service                      ~> 4.0.6
 nuget Aardvark.UI                           ~> 4.0.6
 nuget Aardvark.UI.Primitives                ~> 4.0.6
-nuget Aardvark.Compiler.DomainTypes.MSBuild ~> 4.0.6
+nuget Aardvark.Compiler.DomainTypes.MSBuild ~> 4.0.5
 
 nuget Aardium                               ~> 1.0.2
 #endif
