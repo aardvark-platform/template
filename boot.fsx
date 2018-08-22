@@ -33,7 +33,7 @@ let rec askApplicationType() =
     printfn "please select an application type"
 
     printfn "  0: plain rendering application"
-    printfn "  1: aardvark ui application"
+    printfn "  1: aardvark media application"
 
     
     let a = Console.ReadLine()
