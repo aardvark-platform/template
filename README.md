@@ -14,7 +14,7 @@ This template contains tools for quickly setting up your own interactive visuali
 
 ### Requirement
 
-Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Windows) and [Linux](https://github.com/aardvark-platform/aardvark.docs/wiki/Quickstart-Linux) smoothes the path for your Aardvark experience! 
+Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.docs/wiki/Visual-Studio) and [Linux](https://github.com/aardvark-platform/aardvark.docs/wiki/Linux-Support) smoothes the path for your Aardvark experience! 
 
 ### How to start
 
