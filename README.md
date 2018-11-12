@@ -20,7 +20,7 @@ Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.d
 
 To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
 
-A [video]([Wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki) ) shows how to use the template :)
+A [video](https://www.youtube.com/watch?v=61WFmpmEg-M) shows how to use the template :)
 
 A __visual studio solution__ inclusive project file is generated.
 
