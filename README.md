@@ -20,6 +20,10 @@ Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.d
 
 To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
 
+#### Important note for VisualStudio 2017 users
+
+If you are using Visual Studio 2017, you might miss the `FSHARPINSTALLDIR` variable. In our (script)[https://github.com/aardvark-platform/template/blob/master/build.cmd#L14] we use it to find fsi in order to bootstrap the project. As a workaround use visual studio 2017 developer command prompt to execute `build.cmd` the first time (seealso)[https://github.com/Microsoft/visualfsharp/issues/55129].
+
 A [video](https://www.youtube.com/watch?v=61WFmpmEg-M) shows how to use the template :)
 
 A __visual studio solution__ inclusive project file is generated.
