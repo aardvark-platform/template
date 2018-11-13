@@ -6,6 +6,7 @@ mono .paket/paket.bootstrapper.exe
 if [ -f boot.fsx ]; then
 	fsharpi boot.fsx
 	rm boot.fsx
+    rm .paket/vswhere.exe
 	mono .paket/paket.exe install
 fi
 
