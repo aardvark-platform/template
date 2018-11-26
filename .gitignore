@@ -11,4 +11,5 @@ bin/Debug
 /paket-files
 /.fake
 /.paket/paket.exe
+/.paket/Paket.Restore.targets
 /Aardvark.log
