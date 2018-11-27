@@ -144,17 +144,3 @@ preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
 preprocess <| Path.Combine(".vscode", "launch.json")
 preprocess <| Path.Combine(".vscode", "tasks.json")
 bootSolution()
-
-
-do 
-    let mutable worked = false
-    Trace.tracefn "removing git folder"
-    try
-        System.IO.Directory.Delete(".git", true)
-        worked <- true
-        worked <- Fake.Tools.Git.CommandHelper.directRunGitCommand "." "init"
-        worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "add ."
-        worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "commit -m 'import'"
-    with _ -> 
-        ()
-    if not worked then Fake.Core.Trace.traceErrorfn "could not remove git remote"
