@@ -2,32 +2,40 @@
 setlocal enableextensions enabledelayedexpansion
 PUSHD %~dp0
 
-.paket\paket.bootstrapper.exe
-if errorlevel 1 (
-  exit /b %errorlevel%
-)
 
-IF exist boot.fsx (
-    powershell write-host -fore Green bootstrapping project 
-    SET VSPATH=''
-    for /f "delims=" %%A in ('.\.paket\vswhere.exe -property installationPath') do set "VSPATH=%%A"
-    SET "fsi=!VSPATH!\Common7\IDE\CommonExtensions\Microsoft\FSharp\fsi.exe"
-    
-    IF NOT exist "!fsi!" (
-        SET "fsi=%FSHARPINSTALLDIR%\fsi.exe"
-        IF NOT exist "!fsi!" (
-            powershell write-host -fore Red fsi.exe not found. please install fsharp tools or Visual Studio
-            exit /b 1
-        )   
+
+if exist boot.fsx (
+    if NOT exist .paket\FAKE (
+        IF NOT exist .paket\nuget.exe (
+            powershell write-host -fore Green downloading nuget.exe
+            powershell $progressPreference = 'silentlyContinue'; Invoke-WebRequest "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" -OutFile ".paket\nuget.exe"
+            if errorlevel 1 (
+              exit /b %errorlevel%
+            )
+        )
+
+        powershell write-host -fore Green downloading FAKE
+        .paket\nuget.exe install FAKE -ExcludeVersion -OutputDirectory .paket -NonInteractive -Verbosity quiet
+        if errorlevel 1 (
+          exit /b %errorlevel%
+        )
+        del .paket\nuget.exe
     )
-    
-    "!fsi!" "boot.fsx" 
+
+    powershell write-host -fore Green bootstrapping project
+    .paket\FAKE\tools\FAKE.exe --removeLegacyFakeWarning run boot.fsx
     if errorlevel 1 (
       exit /b %errorlevel%
     )
-    del "boot.fsx"
-    del ".\.paket\vswhere.exe"
-    .paket\paket.exe install
+    rd /S /Q .paket\FAKE
+    del boot.fsx
+)
+
+if NOT exist .paket\paket.exe (
+    .paket\paket.bootstrapper.exe
+    if errorlevel 1 (
+      exit /b %errorlevel%
+    )
 )
 
 if NOT exist paket.lock (
