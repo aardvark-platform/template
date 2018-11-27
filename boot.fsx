@@ -1,3 +1,9 @@
+#r @".paket\FAKE\tools\FakeLib.dll"
+
+open Fake
+open Fake.Core
+open Fake.Tools
+
 open System
 open System.IO
 open System.Diagnostics
@@ -7,20 +13,20 @@ do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 
 let ask (question : string) (defaultAnswer : string) =
-    printfn "%s" question
+    Trace.tracefn "%s" question
     let s = Console.ReadLine()
     match s with
         | "" -> defaultAnswer
         | _ -> s
 
 let rec askYesNo (question : string) =
-    printfn "%s (Y|n)" question
+    Trace.tracefn "%s (Y|n)" question
     let a = Console.ReadLine()
     if a = "" || a.[0] = 'Y' || a.[0] = 'y' then true 
     elif a.[0] = 'N' || a.[0] = 'n' then false
     else askYesNo question
 
-printfn ""
+Trace.tracefn ""
 let projectGuid = Guid.NewGuid() |> string
 let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
@@ -30,10 +36,10 @@ type ApplicationType =
     | Media
 
 let rec askApplicationType() =
-    printfn "please select an application type"
+    Trace.tracefn "please select an application type"
 
-    printfn "  0: plain rendering application"
-    printfn "  1: aardvark media application"
+    Trace.tracefn "  0: plain rendering application"
+    Trace.tracefn "  1: aardvark media application"
 
     
     let a = Console.ReadLine()
@@ -94,7 +100,7 @@ let bootSolution() =
             for f in files do
                 let f = Path.Combine("src", "__PROJECT_NAME__",f)
                 File.Delete f
-        with e -> printfn "could not clean up dir: %A" e
+        with e -> Trace.traceErrorfn "could not clean up dir: %A" e
 
     match appType with
         | Rendering ->
@@ -125,7 +131,7 @@ let bootSolution() =
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
 
-printfn "creating template"
+Trace.tracefn "creating template"
 
 
 preprocess <| "paket.dependencies"
@@ -138,3 +144,16 @@ preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
 preprocess <| Path.Combine(".vscode", "launch.json")
 preprocess <| Path.Combine(".vscode", "tasks.json")
 bootSolution()
+
+
+do 
+    let mutable worked = false
+    Trace.tracefn "removing git folder"
+    try
+        System.IO.Directory.Delete(".git", true)
+        worked <- Fake.Tools.Git.CommandHelper.directRunGitCommand "." "init"
+        worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "add ."
+        worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "commit -m 'import'"
+    with _ -> 
+        ()
+    if not worked then Fake.Core.Trace.traceErrorfn "could not remove git remote"
