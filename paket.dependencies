@@ -16,9 +16,9 @@ nuget Aardvark.Application.Slim.GL          ~> 4.6.1
 nuget Aardvark.Application.Slim.Vulkan      ~> 4.6.1
                                             
 #if __Media__                               
-nuget Aardvark.Service                      ~> 4.4.7
-nuget Aardvark.UI                           ~> 4.4.7
-nuget Aardvark.UI.Primitives                ~> 4.4.7
+nuget Aardvark.Service                      ~> 4.4.8
+nuget Aardvark.UI                           ~> 4.4.8
+nuget Aardvark.UI.Primitives                ~> 4.4.8
 
 nuget Aardvark.Compiler.DomainTypes.MSBuild ~> 4.2.3
 
