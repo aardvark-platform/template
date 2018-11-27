@@ -1,12 +1,12 @@
 #!/bin/bash
 
-mono .paket/paket.bootstrapper.exe
-# mono .paket/paket.exe restore --group Build
+if [ -f .paket/paket.exe ]; then
+    mono .paket/paket.bootstrapper.exe
+fi
 
 if [ -f boot.fsx ]; then
 	fsharpi boot.fsx
 	rm boot.fsx
-    rm .paket/vswhere.exe
 	mono .paket/paket.exe install
 fi
 
