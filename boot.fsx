@@ -151,6 +151,7 @@ do
     Trace.tracefn "removing git folder"
     try
         System.IO.Directory.Delete(".git", true)
+        worked <- true
         worked <- Fake.Tools.Git.CommandHelper.directRunGitCommand "." "init"
         worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "add ."
         worked <- worked && Fake.Tools.Git.CommandHelper.directRunGitCommand "." "commit -m 'import'"
