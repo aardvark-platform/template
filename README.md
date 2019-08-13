@@ -21,6 +21,15 @@ Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.d
 
 To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
 
+To run the example use:
+``dotnet run -c Release -p .\src\{name of the project name you used}\{name of the project name you used}.fsproj``
+
+If you want to run the compiled version directly, make sure to setup the working directory or `cd` to it:
+``cd bin\Release\netcoreapp2.0\{name of the project name you used}
+dotnet {name of the project name you used}.dll
+``
+
+
 A [video](https://www.youtube.com/watch?v=61WFmpmEg-M) shows how we used this repository to setup everything including vscode.
 A __visual studio solution__ inclusive project file is generated.
 
