@@ -18,7 +18,7 @@ let main args =
     Aardvark.Init()
     Aardium.init()
 
-    let app = new HeadlessVulkanApplication(true)
+    let app = new HeadlessVulkanApplication()
 
     WebPart.startServer 4321 [
         MutableApp.toWebPart' app.Runtime false (App.start App.app)
