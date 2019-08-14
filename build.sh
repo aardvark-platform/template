@@ -1,7 +1,13 @@
 #!/bin/bash
 
-if [ -f .paket/paket.exe ]; then
+if [ ! -f .paket/paket.exe ]; then
+    echo "run bootstrapper"
     mono .paket/paket.bootstrapper.exe
+fi
+
+if [ ! -f .paket/nuget.exe ]; then
+	echo "download nuget"
+	wget -P .paket/ https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 fi
 
 if [ -f boot.fsx ]; then
