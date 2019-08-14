@@ -1,4 +1,4 @@
-#r @".paket\FAKE\tools\FakeLib.dll"
+#r @".paket/FAKE/tools/FakeLib.dll"
 
 open Fake
 open Fake.Core
