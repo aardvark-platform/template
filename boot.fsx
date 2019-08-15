@@ -1,8 +1,5 @@
-#r @".paket/FAKE/tools/FakeLib.dll"
+#load ".fake/boot.fsx/intellisense.fsx"
 
-open Fake
-open Fake.Core
-open Fake.Tools
 
 open System
 open System.IO
@@ -13,20 +10,20 @@ do Environment.CurrentDirectory <- __SOURCE_DIRECTORY__
 
 
 let ask (question : string) (defaultAnswer : string) =
-    Trace.tracefn "%s" question
+    printfn "%s" question
     let s = Console.ReadLine()
     match s with
         | "" -> defaultAnswer
         | _ -> s
 
 let rec askYesNo (question : string) =
-    Trace.tracefn "%s (Y|n)" question
+    printfn "%s (Y|n)" question
     let a = Console.ReadLine()
     if a = "" || a.[0] = 'Y' || a.[0] = 'y' then true 
     elif a.[0] = 'N' || a.[0] = 'n' then false
     else askYesNo question
 
-Trace.tracefn ""
+printfn ""
 let projectGuid = Guid.NewGuid() |> string
 let solutionName = ask "Please enter a solution name [Aardvark]" "Aardvark"
 let projectName = ask "Please enter a project name [Example]" "Example"
@@ -36,10 +33,10 @@ type ApplicationType =
     | Media
 
 let rec askApplicationType() =
-    Trace.tracefn "please select an application type"
+    printfn "please select an application type"
 
-    Trace.tracefn "  0: plain rendering application"
-    Trace.tracefn "  1: aardvark media application"
+    printfn "  0: plain rendering application"
+    printfn "  1: aardvark media application"
 
     
     let a = Console.ReadLine()
@@ -100,7 +97,7 @@ let bootSolution() =
             for f in files do
                 let f = Path.Combine("src", "__PROJECT_NAME__",f)
                 File.Delete f
-        with e -> Trace.traceErrorfn "could not clean up dir: %A" e
+        with e -> printfn "could not clean up dir: %A" e
 
     match appType with
         | Rendering ->
@@ -131,7 +128,7 @@ let bootSolution() =
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
 
-Trace.tracefn "creating template"
+printfn "creating template"
 
 
 preprocess <| "paket.dependencies"

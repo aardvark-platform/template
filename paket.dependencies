@@ -27,8 +27,5 @@ nuget Aardium                               ~> 1.0.21
 
 
 group Build
-framework: net471
-content: none
 source https://api.nuget.org/v3/index.json
-
-github aardvark-platform/aardvark.fake:v4-temp
+github aardvark-platform/aardvark.fake:v5
