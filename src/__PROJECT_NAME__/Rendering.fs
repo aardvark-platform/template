@@ -11,7 +11,7 @@ let main argv =
     Ag.initialize()
     Aardvark.Init()
 
-    use app = new VulkanApplication(true)
+    use app = new OpenGlApplication()
     use win = app.CreateGameWindow(8)
 
     let quadGeometry =
