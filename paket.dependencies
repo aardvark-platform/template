@@ -29,4 +29,4 @@ group Build
 source https://api.nuget.org/v3/index.json
 github aardvark-platform/aardvark.fake:v5
 nuget Fake.DotNet.Cli
-nuget FSharp.Core                           ~> 4.6.2
+nuget FSharp.Core                           ~> 4.7.0
