@@ -18,6 +18,7 @@ if exist boot.fsx (
       exit /b %errorlevel%
     )
 	del boot.fsx
+	del boot.fsx.lock
 )
 
 IF NOT exist .paket\paket.exe (

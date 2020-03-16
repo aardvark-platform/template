@@ -1,5 +1,6 @@
 FSharp.Core
 
+FSharp.Data.Adaptive
 Aardvark.Base
 Aardvark.Base.Incremental
 Aardvark.Base.FSharp
@@ -15,6 +16,6 @@ Aardvark.SceneGraph.IO
 Aardvark.Service
 Aardvark.UI
 Aardvark.UI.Primitives
-Aardvark.Compiler.DomainTypes.MSBuild
+Adaptify.MSBuild
 Aardium
 #endif

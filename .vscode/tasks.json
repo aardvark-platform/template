@@ -7,9 +7,12 @@
             "label": "build",
             "command": "dotnet build src/__SOLUTION_NAME__.sln",
             "type": "shell",
-            "group": "build",
+            "group": {
+              "kind": "build",
+              "isDefault": true
+            },
             "presentation": {
-                "reveal": "silent"
+                "reveal": "always"
             },
             "problemMatcher": "$msCompile"
         }

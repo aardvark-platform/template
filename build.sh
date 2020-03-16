@@ -12,6 +12,7 @@ if [ -f boot.fsx ]; then
 	dotnet tool install fake-cli --tool-path .fakecli --version 5.16.0
 	.fakecli/fake run boot.fsx
 	rm boot.fsx
+	rm boot.fsx.lock
 	rm -dfr .fakecli
 fi
 
