@@ -4,23 +4,24 @@ storage: none
 
 nuget FSharp.Core                           >= 4.6.2 lowest_matching: true
                                             
-nuget Aardvark.Base                         ~> 5.0.10
-nuget Aardvark.Base.Incremental             ~> 5.0.10
-nuget Aardvark.Base.FSharp                  ~> 5.0.10
+nuget FSharp.Data.Adaptive                  ~> 1.0.0
+nuget Aardvark.Base                         ~> 5.0.13
+nuget Aardvark.Base.Incremental             ~> 5.0.13
+nuget Aardvark.Base.FSharp                  ~> 5.0.13
                                             
-nuget Aardvark.Base.Rendering               ~> 5.0.6
-nuget Aardvark.SceneGraph                   ~> 5.0.6
-nuget Aardvark.SceneGraph.IO                ~> 5.0.6
-nuget Aardvark.Application.Slim             ~> 5.0.6
-nuget Aardvark.Application.Slim.GL          ~> 5.0.6
-nuget Aardvark.Application.Slim.Vulkan      ~> 5.0.6
+nuget Aardvark.Base.Rendering               ~> 5.0.7
+nuget Aardvark.SceneGraph                   ~> 5.0.7
+nuget Aardvark.SceneGraph.IO                ~> 5.0.7
+nuget Aardvark.Application.Slim             ~> 5.0.7
+nuget Aardvark.Application.Slim.GL          ~> 5.0.7
+nuget Aardvark.Application.Slim.Vulkan      ~> 5.0.7
                                             
 #if __Media__
-nuget Aardvark.Service                      ~> 5.0.3
-nuget Aardvark.UI                           ~> 5.0.3
-nuget Aardvark.UI.Primitives                ~> 5.0.3
+nuget Aardvark.Service                      ~> 5.0.5
+nuget Aardvark.UI                           ~> 5.0.5
+nuget Aardvark.UI.Primitives                ~> 5.0.5
 
-nuget Adaptify.MSBuild                      ~> 0.0.48
+nuget Adaptify.MSBuild                      ~> 1.0.0
 
 nuget Aardium                               ~> 1.1.0
 #endif
@@ -28,5 +29,5 @@ nuget Aardium                               ~> 1.1.0
 group Build
 source https://api.nuget.org/v3/index.json
 framework: netstandard2.0
-github aardvark-platform/aardvark.fake:v5
+github aardvark-platform/aardvark.fake:v51
 nuget Fake.DotNet.Cli
