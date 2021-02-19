@@ -23,6 +23,10 @@ nuget Adaptify.MSBuild                      ~> 1.0.0
 
 nuget Aardium                               ~> 1.1.0
 
+// workaround for 5.0 packages 
+nuget Silk.NET.GLFW                      = 1.7.0
+nuget Silk.NET.Core                      = 1.7.0
+
 group Build
 source https://api.nuget.org/v3/index.json
 framework: netstandard2.0
