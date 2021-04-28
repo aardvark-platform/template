@@ -4,7 +4,7 @@ open System
 open Aardvark.Base
 open Aardvark.UI
 open Aardvark.UI.Primitives
-open Aardvark.Base.Rendering
+open Aardvark.Rendering
 open FSharp.Data.Adaptive
 open __PROJECT_NAME__.Model
 
