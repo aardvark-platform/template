@@ -1,6 +1,3 @@
-#load ".fake/boot.fsx/intellisense.fsx"
-#r "nuget: FSharp.Core ~> 4.6.2 //"
-
 open System
 open System.IO
 open System.Diagnostics
@@ -85,19 +82,12 @@ let preprocess(file : string) =
     File.WriteAllText(file, cleaned)
 
 let bootSolution() =
-    File.Move(Path.Combine("src", "__SOLUTION_NAME__.sln"), Path.Combine("src", sprintf "%s.sln" solutionName))
+    File.Move(Path.Combine("__SOLUTION_NAME__.sln"), sprintf "%s.sln" solutionName)
     File.Move(Path.Combine("src", "__PROJECT_NAME__", "__PROJECT_NAME__.fsproj"), Path.Combine("src", "__PROJECT_NAME__", sprintf "%s.fsproj" projectName))
 
     let target = Path.Combine("src", projectName)
     if Directory.Exists target then
         Directory.Delete(target,true)
-
-    let deleteInPr files =
-        try
-            for f in files do
-                let f = Path.Combine("src", "__PROJECT_NAME__",f)
-                File.Delete f
-        with e -> printfn "could not clean up dir: %A" e
 
     match appType with
         | Rendering ->
@@ -111,20 +101,6 @@ let bootSolution() =
                 "Media.fs", "Program.fs"
             ]
             
-
-    //if media then
-    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","MediaUI.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    deleteInPr ["WPF.fs";"WinForms.fs"]
-    //elif wpf then
-    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","WPF.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WinForms.fs"]
-    //elif winForms then
-    //    File.Delete(Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    File.Move(Path.Combine("src", "__PROJECT_NAME__","WinForms.fs"), Path.Combine("src", "__PROJECT_NAME__","Program.fs"))
-    //    deleteInPr ["MediaUI.fs";"RenderModel.fs";"RenderModelApp.fs"; "WPF.fs"]
-
     Directory.Move(Path.Combine("src", "__PROJECT_NAME__"), target)
 
 
@@ -132,12 +108,10 @@ printfn "creating template"
 
 
 preprocess <| "paket.dependencies"
-preprocess <| "build.fsx"
 Path.Combine("src", "__PROJECT_NAME__") 
     |> Directory.GetFiles 
     |> Array.iter preprocess
 
-preprocess <| Path.Combine("src", "__SOLUTION_NAME__.sln")
+preprocess <| "__SOLUTION_NAME__.sln"
 preprocess <| Path.Combine(".vscode", "launch.json")
-preprocess <| Path.Combine(".vscode", "tasks.json")
 bootSolution()

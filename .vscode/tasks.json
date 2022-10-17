@@ -5,7 +5,7 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet build src/__SOLUTION_NAME__.sln",
+            "command": "dotnet build",
             "type": "shell",
             "group": {
               "kind": "build",
