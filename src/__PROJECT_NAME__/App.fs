@@ -58,7 +58,7 @@ module App =
 
         ]
 
-    let app =
+    let app () =
         {
             initial = initial
             update = update

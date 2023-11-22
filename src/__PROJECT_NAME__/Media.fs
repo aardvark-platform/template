@@ -18,10 +18,13 @@ let main args =
     Aardvark.Init()
     Aardium.init()
 
+    // create the opengl application for rendering
     let app = new Aardvark.Application.Slim.OpenGlApplication()
+    // create the media application
+    let mediaApp = App.app()
 
     WebPart.startServerLocalhost 4321 [
-        MutableApp.toWebPart' app.Runtime false (App.start App.app)
+        MutableApp.toWebPart' app.Runtime false (App.start mediaApp)
     ] |> ignore
     
     Aardium.run {
