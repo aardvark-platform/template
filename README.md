@@ -19,4 +19,4 @@ Build and run from command line:
 
 # Resources and Literature
 
-[A video walkthrough for linux (sound on)](https://www.youtube.com/watch?v=61WFmpmEg-M) and [a video walkthrough for windows (sound on)](https://www.youtube.com/watch?v=uFtN9J52-nw) are available. Further Aardvark documentation and walkthroughs are hosted [in the aardvark.docs wiki](https://github.com/aardvark-platform/aardvark.docs/wiki). An alternative way of initializing an Aardvark project template [is the dotnet template](https://github.com/aardvark-platform/aardvark.templates/edit/master/README.md).
+[A video walkthrough for linux (sound on)](https://www.youtube.com/watch?v=61WFmpmEg-M) and [a video walkthrough for windows (sound on)](https://www.youtube.com/watch?v=uFtN9J52-nw) are available. Further Aardvark documentation and walkthroughs are hosted [in the aardvark.docs wiki](https://github.com/aardvark-platform/aardvark.docs/wiki). An alternative way of creating an empty Aardvark project [is the dotnet template](https://github.com/aardvark-platform/aardvark.templates/edit/master/README.md).
