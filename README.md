@@ -2,35 +2,21 @@
 [![license](https://img.shields.io/github/license/aardvark-platform/template.svg)](https://github.com/aardvark-platform/template/blob/master/LICENSE)
 
 [The Aardvark Platform](https://aardvarkians.com/) |
-[Platform Wiki](https://github.com/aardvarkplatform/aardvark.docs/wiki) | 
-[Gallery](https://github.com/aardvarkplatform/aardvark.docs/wiki/Gallery) | 
-[Quickstart](https://github.com/aardvarkplatform/aardvark.docs/wiki/Quickstart-Windows) | 
-[Status](https://github.com/aardvarkplatform/aardvark.docs/wiki/Status)
+[Gallery](https://github.com/aardvark-platform/aardvark.docs/wiki/Gallery) | 
+[Packages&Repositories](https://github.com/aardvark-platform/aardvark.docs/wiki/Packages-and-Repositories)
 
-This repository is part of the open-source [Aardvark platform](https://github.com/aardvark-platform/aardvark.docs/wiki) for visual computing, real-time graphics and visualization.
+This repository is part of the open-source [Aardvark Platform](https://github.com/aardvark-platform) for visual computing, real-time graphics, and visualization. This repository provides an empty template Aardvark project, which is bootstrapped by running `build.cmd` or `./build.sh`. 
 
-## Template
+You need the [.NET SDK](https://dotnet.microsoft.com/en-us/download) installed. Your editor (Visual Studio, Jetbrains Rider, VS Code) should have F# language support installed. Supported platforms are windows, linux, macOS.
 
-This template contains tools for quickly setting up your own interactive visualization app powerd by __Aardvark__.
+# Building and Running
 
-### Requirement
+Invoking `build.cmd` or `./build.sh` runs an interactive shell script where you input name and type (Rendering/Media) of your Aardvark project. This generates a .sln file which is ready to be opened in your IDE of choice.
 
-Our **quickstart** for [Windows](https://github.com/aardvark-platform/aardvark.docs/wiki/Visual-Studio) and [Linux](https://github.com/aardvark-platform/aardvark.docs/wiki/Linux-Support) smoothes the path for your Aardvark experience! 
+Build and run from command line:
 
-### How to start
+``dotnet run -c Release -p .\src\PROJECTNAME\PROJECTNAME.fsproj``
 
-To create a new project run __build.cmd__ or __build.sh__ and follow the instructions.
+# Resources and Literature
 
-To run the example use:
-``dotnet run -c Release -p .\src\{name of the project name you used}\{name of the project name you used}.fsproj``
-
-If you want to run the compiled version directly, make sure to setup the working directory or `cd` to it:
-``cd bin\Release\netcoreapp2.0\{name of the project name you used}
-dotnet {name of the project name you used}.dll
-``
-
-
-A [video(linux)](https://www.youtube.com/watch?v=61WFmpmEg-M) [video(windows)](https://www.youtube.com/watch?v=uFtN9J52-nw) shows how we used this repository to setup everything including vscode.
-A __visual studio solution__ inclusive project file is generated.
-
-After successfully setting up your project, __build.cmd__ or __build.sh__ triggers our [build script](https://github.com/aardvark-platform/Aardvark.Fake).
+[A video walkthrough for linux (sound on)](https://www.youtube.com/watch?v=61WFmpmEg-M) and [a video walkthrough for windows (sound on)](https://www.youtube.com/watch?v=uFtN9J52-nw) are available. Further Aardvark documentation and walkthroughs are hosted [in the aardvark.docs wiki](https://github.com/aardvark-platform/aardvark.docs/wiki). An alternative way of initializing an Aardvark project template [is the dotnet template](https://github.com/aardvark-platform/aardvark.templates/edit/master/README.md).
