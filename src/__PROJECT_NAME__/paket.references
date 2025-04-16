@@ -11,7 +11,6 @@ Aardvark.Application.Slim
 Aardvark.Application.Slim.GL
 Aardvark.Application.Slim.Vulkan
 Aardvark.SceneGraph
-Aardvark.SceneGraph.IO
 
 #if __Media__
 Aardvark.Service
